@@ -1,3 +1,2 @@
 # WrittenRPGGame
-# A console RPG Game written in C#
-# Written by Henri Hatch
+A console, in-text game written by Henri Hatch in C#.
