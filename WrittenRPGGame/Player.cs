@@ -2,6 +2,7 @@ namespace WrittenRPGGame;
 
 public class Player
 {
+    // This defines the Player and sets properties.
     
     public int CurrentHp { get; set; }
     public int MaxHp { get; set; }
