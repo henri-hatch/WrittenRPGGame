@@ -4,9 +4,9 @@ public class Game
 {
     // This is for the game constructor that runs the whole thing, pulling methods from separate classes.
     
-    protected Player _player;
+    protected static Player _player;
 
-    public void GameInit()
+    public static void GameInit()
     {
 
         _player = new Player();
@@ -40,7 +40,13 @@ public class Game
                 break;
             
             case "help":
-                Console.WriteLine("Helping");
+                new Commands().Help();
+                StoryBreak();
+                break;
+            
+            case "stats":
+                new Commands().Stats();
+                StoryBreak();
                 break;
             
             default:
@@ -51,6 +57,9 @@ public class Game
     }
     public static void Main(string[] args)
     {
+
+        GameInit();
+        
         bool initialText = new StoryText().InitialText();
 
         StoryBreak();
