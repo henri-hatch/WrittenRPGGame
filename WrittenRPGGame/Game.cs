@@ -17,12 +17,44 @@ public class Game
         _player.Armor = 1;
         _player.Exp = 0;
         _player.Level = 1;
-        _player.Intelligence = 1;
+        _player.Blessing = 1;
         _player.Gold = 0;
+    }
+
+    public static void StoryBreak()
+    {
+
+        String choice;
+
+        Console.Write("\nTo continue, press <Enter>, otherwise you may use another command. If you are unsure" +
+                          " of what commands you can use, type 'help' >> ");
+        choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "":
+                break;
+            
+            case "look":
+                Console.WriteLine("Looking");
+                break;
+            
+            case "help":
+                Console.WriteLine("Helping");
+                break;
+            
+            default:
+                Console.WriteLine("Unknown command, please make sure you are spelling it right.");
+                StoryBreak();
+                break;
+        }
     }
     public static void Main(string[] args)
     {
         bool initialText = new StoryText().InitialText();
+
+        StoryBreak();
+        
         Console.WriteLine("The program ran successfully.");
     }
 }
