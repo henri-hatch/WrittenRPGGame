@@ -1,3 +1,5 @@
+using System.Security.AccessControl;
+
 namespace WrittenRPGGame;
 
 public class Commands : Game
@@ -41,6 +43,39 @@ public class Commands : Game
                                   "Loose stones, about the size of your fist, litter your cell floor.\n" +
                                   "In the far corner of the room, to the right of the door,\n" +
                                   "lies a heap of cloth, and something…else.");
+                break;
+        }
+    }
+
+    public void Save()
+    {
+
+        string saveOrNo;
+        Console.Write("\nWould you like to save and quit? (y/n) >> ");
+        saveOrNo = Console.ReadLine();
+
+        switch (saveOrNo)
+        {
+            
+            case "y":
+
+                using (StreamWriter file = new StreamWriter("HFSave"))
+                {
+                    file.WriteLine(_player.MaxHp.ToString());
+                    file.WriteLine(_player.CurrentHp.ToString());
+                    file.WriteLine(_player.Strength.ToString());
+                    file.WriteLine(_player.Blessing.ToString());
+                    file.WriteLine(_player.Armor.ToString());
+                    file.WriteLine(_player.Exp.ToString());
+                    file.WriteLine(_player.Level.ToString());
+                    file.WriteLine(_player.Gold.ToString());
+                    file.WriteLine(CurrentStory.ToString());
+                }
+                
+                Environment.Exit(0);
+                break;
+            
+            default:
                 break;
         }
     }

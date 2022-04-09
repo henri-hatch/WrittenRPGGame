@@ -1,3 +1,6 @@
+using System.Formats.Asn1;
+using System.IO;
+
 namespace WrittenRPGGame;
 
 public class Game
@@ -7,29 +10,55 @@ public class Game
     protected static Player _player;
     
     // Pull from file, do not set as 1 every time.
-    private static int _currentStory = 1;
-
+    protected static int CurrentStory;
+    
     public static void GameInit()
     {
 
-        _player = new Player();
+        if (File.Exists("HFSave"))
+        {
 
-        _player.CurrentHp = 100;
-        _player.MaxHp = 100;
-        _player.Strength = 1;
-        _player.Agility = 1;
-        _player.Dexterity = 1;
-        _player.Armor = 1;
-        _player.Exp = 0;
-        _player.Level = 1;
-        _player.Blessing = 1;
-        _player.Gold = 0;
+            using (var fs = new FileStream("HFSave", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var reader = new StreamReader(fs))
+            {
+                
+                string[] lines = System.IO.File.ReadAllLines("HFSave");
+
+                _player = new Player();
+
+                _player.MaxHp = Convert.ToInt32(lines[0]);
+                _player.CurrentHp = Convert.ToInt32(lines[1]);
+                _player.Strength = Convert.ToInt32(lines[2]);
+                _player.Blessing = Convert.ToInt32(lines[3]);
+                _player.Armor = Convert.ToInt32(lines[4]);
+                _player.Exp = Convert.ToInt32(lines[5]);
+                _player.Level = Convert.ToInt32(lines[6]);
+                _player.Gold = Convert.ToInt32(lines[7]);
+                CurrentStory = Convert.ToInt32(lines[8]);
+            }
+        }
+
+        else
+        {
+            _player = new Player();
+            
+            _player.CurrentHp = 100;
+            _player.MaxHp = 100;
+            _player.Strength = 1;
+            // _player.Agility = 1;
+            // _player.Dexterity = 1;
+            _player.Armor = 1;
+            _player.Exp = 0;
+            _player.Level = 1;
+            _player.Blessing = 1;
+            _player.Gold = 0;
+        }
     }
 
     public static void StoryBreak()
     {
 
-        String choice;
+        string choice;
         
         Console.Write("\nEnter a command or press <Enter> to continue. Type 'help' for a list of all available" +
                           " commands. >> ");
@@ -41,7 +70,7 @@ public class Game
                 break;
             
             case "look":
-                new Commands().Look(_currentStory);
+                new Commands().Look(CurrentStory);
                 StoryBreak();
                 break;
             
@@ -52,6 +81,11 @@ public class Game
             
             case "stats":
                 new Commands().Stats();
+                StoryBreak();
+                break;
+            
+            case "save":
+                new Commands().Save();
                 StoryBreak();
                 break;
             
@@ -69,10 +103,10 @@ public class Game
         Console.Write("Welcome to Heaven's Fall\nPress <Enter> to continue >> ");
         Console.ReadLine();
         
-        for (; _currentStory <= 1; _currentStory++)
+        for (; CurrentStory <= 1; CurrentStory++)
         {
             
-            new StoryText().MainStory(_currentStory);
+            new StoryText().MainStory(CurrentStory);
         }
         
         // Save currentStory to a text file to save and load progress along with player stats.
