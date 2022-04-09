@@ -30,9 +30,9 @@ public class Game
     {
 
         String choice;
-
-        Console.Write("\n\nTo continue, press <Enter>, otherwise you may use another command. If you are unsure" +
-                          " of what commands you can use, type 'help' >> ");
+        
+        Console.Write("\nEnter a command or press <Enter> to continue. Type 'help' for a list of all available" +
+                          " commands. >> ");
         choice = Console.ReadLine();
 
         switch (choice)
@@ -41,7 +41,8 @@ public class Game
                 break;
             
             case "look":
-                Console.WriteLine("Looking");
+                new Commands().Look(_currentStory);
+                StoryBreak();
                 break;
             
             case "help":
@@ -75,7 +76,7 @@ public class Game
         }
         
         // Save currentStory to a text file to save and load progress along with player stats.
-        // Save the currentStory variable as itself minus 1
+        // Save the currentStory variable as itself minus 1.
 
         Console.WriteLine("The program ran successfully.");
     }

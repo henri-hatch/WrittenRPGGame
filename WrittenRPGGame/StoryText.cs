@@ -17,6 +17,9 @@ public class StoryText : Game
                                   "Your mouth is dry and your throat parched and something sticky clings to the side\n" +
                                   "of your face. Your wrists are held in place, bound to the stone wall behind you\n" +
                                   "by thick chains.");
+                
+                Console.Write("\n\nGive the command <look> a try! Type 'look'.");
+                
                 StoryBreak();
                 break;
         }
