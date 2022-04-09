@@ -5,6 +5,9 @@ public class Game
     // This is for the game constructor that runs the whole thing, pulling methods from separate classes.
     
     protected static Player _player;
+    
+    // Pull from file, do not set as 1 every time.
+    private static int _currentStory = 1;
 
     public static void GameInit()
     {
@@ -14,6 +17,8 @@ public class Game
         _player.CurrentHp = 100;
         _player.MaxHp = 100;
         _player.Strength = 1;
+        _player.Agility = 1;
+        _player.Dexterity = 1;
         _player.Armor = 1;
         _player.Exp = 0;
         _player.Level = 1;
@@ -26,7 +31,7 @@ public class Game
 
         String choice;
 
-        Console.Write("\nTo continue, press <Enter>, otherwise you may use another command. If you are unsure" +
+        Console.Write("\n\nTo continue, press <Enter>, otherwise you may use another command. If you are unsure" +
                           " of what commands you can use, type 'help' >> ");
         choice = Console.ReadLine();
 
@@ -59,11 +64,19 @@ public class Game
     {
 
         GameInit();
-        
-        bool initialText = new StoryText().InitialText();
 
-        StoryBreak();
+        Console.Write("Welcome to Heaven's Fall\nPress <Enter> to continue >> ");
+        Console.ReadLine();
         
+        for (; _currentStory <= 1; _currentStory++)
+        {
+            
+            new StoryText().MainStory(_currentStory);
+        }
+        
+        // Save currentStory to a text file to save and load progress along with player stats.
+        // Save the currentStory variable as itself minus 1
+
         Console.WriteLine("The program ran successfully.");
     }
 }

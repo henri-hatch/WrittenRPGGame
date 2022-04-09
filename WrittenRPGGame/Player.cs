@@ -13,6 +13,8 @@ public class Player
     public int Exp { get; set; }
     public int Level { get; set; }
     public int Strength { get; set; }
+    public int Agility { get; set; }
+    public int Dexterity { get; set; }
     public int Armor { get; set; }
     public int Blessing { get; set; }
 }
