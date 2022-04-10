@@ -64,6 +64,8 @@ public class Commands : Game
                     file.WriteLine(_player.MaxHp.ToString());
                     file.WriteLine(_player.CurrentHp.ToString());
                     file.WriteLine(_player.Strength.ToString());
+                    file.WriteLine(_player.Agility.ToString());
+                    file.WriteLine(_player.Dexterity.ToString());
                     file.WriteLine(_player.Blessing.ToString());
                     file.WriteLine(_player.Armor.ToString());
                     file.WriteLine(_player.Exp.ToString());

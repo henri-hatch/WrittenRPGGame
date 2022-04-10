@@ -29,12 +29,14 @@ public class Game
                 _player.MaxHp = Convert.ToInt32(lines[0]);
                 _player.CurrentHp = Convert.ToInt32(lines[1]);
                 _player.Strength = Convert.ToInt32(lines[2]);
-                _player.Blessing = Convert.ToInt32(lines[3]);
-                _player.Armor = Convert.ToInt32(lines[4]);
-                _player.Exp = Convert.ToInt32(lines[5]);
-                _player.Level = Convert.ToInt32(lines[6]);
-                _player.Gold = Convert.ToInt32(lines[7]);
-                CurrentStory = Convert.ToInt32(lines[8]);
+                _player.Agility = Convert.ToInt32(lines[3]);
+                _player.Dexterity = Convert.ToInt32(lines[4]);
+                _player.Blessing = Convert.ToInt32(lines[5]);
+                _player.Armor = Convert.ToInt32(lines[6]);
+                _player.Exp = Convert.ToInt32(lines[7]);
+                _player.Level = Convert.ToInt32(lines[8]);
+                _player.Gold = Convert.ToInt32(lines[9]);
+                CurrentStory = Convert.ToInt32(lines[10]);
             }
         }
 
@@ -45,8 +47,8 @@ public class Game
             _player.CurrentHp = 100;
             _player.MaxHp = 100;
             _player.Strength = 1;
-            // _player.Agility = 1;
-            // _player.Dexterity = 1;
+            _player.Agility = 1;
+            _player.Dexterity = 1;
             _player.Armor = 1;
             _player.Exp = 0;
             _player.Level = 1;
@@ -100,7 +102,21 @@ public class Game
 
         GameInit();
 
-        Console.Write("Welcome to Heaven's Fall\nPress <Enter> to continue >> ");
+        Console.WriteLine("Welcome to Heaven's Fall");
+
+        if (File.Exists("HFSave"))
+        {
+            
+            Console.WriteLine("\nA previous save file was detected, you will start where you left off.");
+        }
+
+        else
+        {
+
+            Console.WriteLine("No save file detected, a new one will be created.");
+        }
+        
+        Console.Write("\nPress <Enter> to continue >> ");
         Console.ReadLine();
         
         for (; CurrentStory <= 1; CurrentStory++)
@@ -108,9 +124,6 @@ public class Game
             
             new StoryText().MainStory(CurrentStory);
         }
-        
-        // Save currentStory to a text file to save and load progress along with player stats.
-        // Save the currentStory variable as itself minus 1.
 
         Console.WriteLine("The program ran successfully.");
     }
