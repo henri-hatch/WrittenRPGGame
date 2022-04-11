@@ -9,11 +9,11 @@ public class Game
     
     protected static Player _player;
     
-    // Pull from file, do not set as 1 every time.
     protected static int CurrentStory;
     
     public static void GameInit()
     {
+        // Game initializer to pull save files or create new ones, sets up the player.
 
         if (File.Exists("HFSave"))
         {
@@ -59,7 +59,9 @@ public class Game
 
     public static void StoryBreak()
     {
-
+    
+        // Method to put a break in the story.
+        
         string choice;
         
         Console.Write("\nEnter a command or press <Enter> to continue. Type 'help' for a list of all available" +
@@ -100,6 +102,8 @@ public class Game
     public static void Main(string[] args)
     {
 
+        // Main method that runs the whole thing.
+        
         GameInit();
 
         Console.WriteLine("Welcome to Heaven's Fall");
@@ -119,6 +123,7 @@ public class Game
         Console.Write("\nPress <Enter> to continue >> ");
         Console.ReadLine();
         
+        // This makes the story go.
         for (; CurrentStory <= 1; CurrentStory++)
         {
             
