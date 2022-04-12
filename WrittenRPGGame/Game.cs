@@ -93,6 +93,11 @@ public class Game
                 StoryBreak();
                 break;
             
+            case "interact":
+                new Commands().Interact(CurrentStory);
+                StoryBreak();
+                break;
+            
             default:
                 Console.WriteLine("Unknown command, please make sure you are spelling it right.");
                 StoryBreak();
