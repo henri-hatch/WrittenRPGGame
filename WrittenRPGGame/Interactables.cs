@@ -5,7 +5,7 @@ public class Interactables
     // This will contain all interactables in each stage when looking. Each item will be contained in a list
     // and can be looped through to list and interact with each item. Some can be picked up, others cannot.
 
-    public List<string> areaOne = new List<string>();
+    public static List<string> areaOne = new List<string>();
     
     public void SetInteractLists()
     {
@@ -17,9 +17,28 @@ public class Interactables
         areaOne.Add("5. Heap of Cloth on the Ground");
     }
 
-    public static void Interact(int currentStory)
+    public static int Interact(int currentStory)
     {
-        
-        
+
+        int choice = 0;
+
+        Console.WriteLine("Enter an option using the number before each option.");
+        switch (currentStory)
+        {
+            
+            case 1:
+                for (int i = 0; i < areaOne.Count; i++)
+                {
+                    
+                    Console.WriteLine(areaOne[i]);
+                }
+                
+                Console.Write("\nEnter your choice >> ");
+                choice = Convert.ToInt32(Console.ReadLine());
+
+                break;
+        }
+
+        return choice;
     }
 }

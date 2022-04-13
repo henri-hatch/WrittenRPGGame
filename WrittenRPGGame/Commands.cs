@@ -35,8 +35,10 @@ public class Commands : Game
 
     public void Interact(int currentStage)
     {
-
-        Interactables.Interact(currentStage);
+        
+        int choice;
+        choice = Interactables.Interact(currentStage);
+        new StoryText().InteractStory(currentStage, choice);
     }
 
     public void Save()

@@ -38,6 +38,8 @@ public class Game
                 _player.Gold = Convert.ToInt32(lines[9]);
                 CurrentStory = Convert.ToInt32(lines[10]);
             }
+            
+            new Interactables().SetInteractLists();
         }
 
         else
@@ -54,6 +56,8 @@ public class Game
             _player.Level = 1;
             _player.Blessing = 1;
             _player.Gold = 0;
+
+            new Interactables().SetInteractLists();
         }
     }
 
