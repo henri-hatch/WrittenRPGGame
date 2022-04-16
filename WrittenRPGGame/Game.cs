@@ -46,12 +46,12 @@ public class Game
         {
             _player = new Player();
             
-            _player.CurrentHp = 100;
+            _player.CurrentHp = 50;
             _player.MaxHp = 100;
             _player.Strength = 1;
             _player.Agility = 1;
             _player.Dexterity = 1;
-            _player.Armor = 1;
+            _player.Armor = 0;
             _player.Exp = 0;
             _player.Level = 1;
             _player.Blessing = 1;

@@ -11,7 +11,7 @@ public class Commands : Game
     public void Help()
     {
 
-        Console.WriteLine("Possible commands are: \n\t 'help' \n\t 'look' \n\t 'stats'");
+        Console.WriteLine("Possible commands are: \n\t 'help' \n\t 'look' \n\t 'stats' \n\t 'interact'");
     }
 
     public void Stats()

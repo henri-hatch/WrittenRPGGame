@@ -56,6 +56,7 @@ public class StoryText : Game
         {
             
             case 1:
+                
                 switch (choice)
                 {
                     case 1:
