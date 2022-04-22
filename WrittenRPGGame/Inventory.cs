@@ -3,8 +3,6 @@ namespace WrittenRPGGame;
 public class Inventory : Game
 {
 
-    public List<Item> playerInventory = new List<Item>();
-
     public void addItem(string name, string desc, int quantity)
     {
 

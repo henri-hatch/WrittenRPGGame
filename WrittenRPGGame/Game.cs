@@ -11,8 +11,11 @@ public class Game
     
     protected static int CurrentStory;
     
+    public static List<Item> playerInventory = new List<Item>();
+    
     public static void GameInit()
     {
+        
         // Game initializer to pull save files or create new ones, sets up the player.
 
         if (File.Exists("HFSave"))
