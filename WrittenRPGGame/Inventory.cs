@@ -3,7 +3,7 @@ namespace WrittenRPGGame;
 public class Inventory : Game
 {
 
-    public void addItem(string name, string desc, int quantity)
+    public static void addItem(string name, string desc, int quantity)
     {
 
         bool containsItem = playerInventory.Any(item => item.Name == name);

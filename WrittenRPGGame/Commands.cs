@@ -41,6 +41,19 @@ public class Commands : Game
         new StoryText().InteractStory(currentStage, choice);
     }
 
+    public void Inventory()
+    {
+        
+        // Shows Inventory
+        int num = 1;
+        
+        foreach (Item items in playerInventory)
+        {
+            
+            Console.WriteLine(num + ") " + items.Quantity + " " + items.Name);
+        }
+    }
+
     public void Save()
     {
 

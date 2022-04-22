@@ -105,6 +105,17 @@ public class Game
                 StoryBreak();
                 break;
             
+            case "inventory":
+                new Commands().Inventory();
+                StoryBreak();
+                break;
+            
+            case "additem":
+                Inventory.addItem("potion", "good soup", 1);
+                Console.WriteLine("Successfully added item.");
+                StoryBreak();
+                break;
+            
             default:
                 Console.WriteLine("Unknown command, please make sure you are spelling it right.");
                 StoryBreak();
