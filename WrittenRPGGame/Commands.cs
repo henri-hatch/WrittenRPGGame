@@ -11,7 +11,8 @@ public class Commands : Game
     public void Help()
     {
 
-        Console.WriteLine("Possible commands are: \n\t 'help' \n\t 'look' \n\t 'stats' \n\t 'interact'");
+        Console.WriteLine("Possible commands are: \n\t 'help' \n\t 'look' \n\t 'stats' \n\t 'interact' \n\t " +
+                          "'save' \n\t 'remove' \n\t 'inventory'");
     }
 
     public void Stats()
@@ -52,6 +53,18 @@ public class Commands : Game
             
             Console.WriteLine(num + ") " + items.Quantity + " " + items.Name);
         }
+    }
+
+    public static void RemoveItem()
+    {
+
+        Console.Write("\nWhat would you like to remove? >> ");
+        string name = Console.ReadLine();
+        
+        Console.Write("\nHow many of said item would you like to remove? >> ");
+        int quantity = Convert.ToInt32(Console.ReadLine());
+        
+        WrittenRPGGame.Inventory.removeItem(name, quantity);
     }
 
     public void Save()

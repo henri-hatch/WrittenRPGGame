@@ -72,7 +72,7 @@ public class StoryText : Game
                         Console.WriteLine("Window");
                         break;
                     case 5:
-                        Console.WriteLine("Imp");
+                        Console.WriteLine("Dead Imp");
                         break;
                 }
 

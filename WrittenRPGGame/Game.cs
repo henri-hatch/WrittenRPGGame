@@ -116,6 +116,11 @@ public class Game
                 StoryBreak();
                 break;
             
+            case "remove":
+                Commands.RemoveItem();
+                StoryBreak();
+                break;
+            
             default:
                 Console.WriteLine("Unknown command, please make sure you are spelling it right.");
                 StoryBreak();
