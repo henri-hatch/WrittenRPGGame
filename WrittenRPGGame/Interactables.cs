@@ -1,6 +1,6 @@
 namespace WrittenRPGGame;
 
-public class Interactables
+public class Interactables : Game
 {
     // This will contain all interactables in each stage when looking. Each item will be contained in a list
     // and can be looped through to list and interact with each item. Some can be picked up, others cannot.
@@ -40,5 +40,37 @@ public class Interactables
         }
 
         return choice;
+    }
+
+
+    public static void InteractChoices(int currentStory, int choice)
+    {
+        switch (currentStory)
+        {
+            case 1:
+                switch (choice)
+                {
+                    case 1:
+                        bool containsRock = playerInventory.Any(item => item.Name == "Rock");
+                        if (_player.Chained && !containsRock)
+                        {
+                            Console.WriteLine("\nYou attempt to break the chains");
+                            // Strength CHECK 
+                        }
+                        else if (_player.Chained && containsRock)
+                        {
+                            Console.WriteLine("You use the rock to break the chains");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You look at the chains and notice that they are rusty");
+                        }
+                        break;
+                    case 2:
+                        break;
+                }
+
+                break;
+        }
     }
 }

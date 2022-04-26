@@ -59,6 +59,7 @@ public class Game
             _player.Level = 1;
             _player.Blessing = 1;
             _player.Gold = 0;
+            _player.Chained = true;
 
             new Interactables().SetInteractLists();
         }

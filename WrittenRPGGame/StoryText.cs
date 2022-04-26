@@ -43,40 +43,4 @@ public class StoryText : Game
                 break;
         }
     }
-
-    public void InteractStory(int currentStage, int choice)
-    {
-        
-        // This is gonna be a bit messy, a lot of nested switch statements. The outlying switch statements decide
-        // and get the input for the current stage, and the inside or nested switch statements will determine which
-        // option you chose in said stage.
-
-        Console.WriteLine();
-        switch (currentStage)
-        {
-            
-            case 1:
-                
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine("Chains");
-                        break; 
-                    case 2:
-                        Console.WriteLine("Stones");
-                        break;
-                    case 3:
-                        Console.WriteLine("Door");
-                        break;
-                    case 4:
-                        Console.WriteLine("Window");
-                        break;
-                    case 5:
-                        Console.WriteLine("Dead Imp");
-                        break;
-                }
-
-                break;
-        }
-    }
 }
