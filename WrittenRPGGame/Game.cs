@@ -12,7 +12,8 @@ public class Game
     protected static int CurrentStory;
     
     public static List<Item> playerInventory = new List<Item>();
-    
+
+    public static bool NextLevel;
     public static void GameInit()
     {
         
@@ -59,7 +60,7 @@ public class Game
             _player.Level = 1;
             _player.Blessing = 1;
             _player.Gold = 0;
-            _player.Chained = true;
+            _player.IsChained = true;
 
             new Interactables().SetInteractLists();
         }
@@ -102,7 +103,12 @@ public class Game
                 break;
             
             case "interact":
-                new Commands().Interact(CurrentStory);
+                NextLevel = Commands.Interact(CurrentStory);
+                if (NextLevel)
+                {
+                    NextLevel = false;
+                    break;
+                }
                 StoryBreak();
                 break;
             
@@ -154,10 +160,10 @@ public class Game
         Console.ReadLine();
         
         // This makes the story go.
-        for (; CurrentStory <= 1; CurrentStory++)
+        for (; CurrentStory <= 5; CurrentStory++)
         {
             
-            new StoryText().MainStory(CurrentStory);
+            StoryText.MainStory(CurrentStory);
         }
 
         Console.WriteLine("The program ran successfully.");

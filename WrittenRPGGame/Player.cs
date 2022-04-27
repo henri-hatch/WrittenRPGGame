@@ -17,6 +17,5 @@ public class Player
     public int Dexterity { get; set; }
     public int Armor { get; set; }
     public int Blessing { get; set; }
-    
-    public bool Chained { get; set; }
+    public bool IsChained { get; set; }
 }

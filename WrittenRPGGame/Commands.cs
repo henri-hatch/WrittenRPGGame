@@ -34,12 +34,14 @@ public class Commands : Game
         StoryText.LookStory(currentStage); 
     }
 
-    public void Interact(int currentStage)
+    public static bool Interact(int currentStage)
     {
-
+        bool nextLevelFetch;
         int choice, interact;
         choice = Interactables.Interact(currentStage);
-        Interactables.InteractChoices(currentStage, choice);
+        nextLevelFetch = Interactables.InteractChoices(currentStage, choice);
+
+        return nextLevelFetch;
     }
 
     public void Inventory()

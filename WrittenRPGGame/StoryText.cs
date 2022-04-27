@@ -6,7 +6,7 @@ public class StoryText : Game
     // Return some sort of value at the end tell the game that this sect is over and to continue to the next section.
     // If there is some sort of choice involved, return an integer, otherwise just return true as a boolean.
 
-    public void MainStory(int section)
+    public static void MainStory(int section)
     {
         
         switch (section) {
@@ -19,6 +19,11 @@ public class StoryText : Game
                                   "by thick chains.");
                 
                 Console.Write("\n\nGive the command <look> a try! Type 'look'.");
+                
+                StoryBreak();
+                break;
+            case 2:
+                Console.WriteLine("You step into the next level!");
                 
                 StoryBreak();
                 break;
