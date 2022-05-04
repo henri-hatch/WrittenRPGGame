@@ -62,7 +62,23 @@ public class Interactables : Game
                         if (_player.IsChained && !containsRock)
                         {
                             Console.WriteLine("\n*You attempt to break the chains*");   // Italicized
-                            // Strength CHECK
+                            System.Threading.Thread.Sleep(2000);
+
+                            // Performs the check
+                            if (Checks.Check(_player.Strength, 5, "Strength"))
+                            {
+                                _player.IsChained = false;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("You are no longer chained");
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("You didn't pass the Strength check, and you are still chained.");
+                                Console.ResetColor();
+                                break;
+                            }
                         }
                         else if (_player.IsChained && containsRock)
                         {
