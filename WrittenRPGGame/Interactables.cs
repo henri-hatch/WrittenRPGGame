@@ -61,7 +61,7 @@ public class Interactables : Game
                         
                         if (_player.IsChained && !containsRock)
                         {
-                            Console.WriteLine("\nYou attempt to break the chains");
+                            Console.WriteLine("\n*You attempt to break the chains*");   // Italicized
                             // Strength CHECK
                         }
                         else if (_player.IsChained && containsRock)
@@ -81,8 +81,12 @@ public class Interactables : Game
                         Console.WriteLine("*You pick up the rock*");    // Italicized
                         Inventory.addItem("Rock", "Rock", 1);
                         Console.WriteLine("[+1 Rock]"); // Format for inventory text.
-                        Console.WriteLine("...");
-                        // Add in a pause, then print the following.
+                        Console.Write(".");
+                        System.Threading.Thread.Sleep(1000);
+                        Console.Write(".");
+                        System.Threading.Thread.Sleep(1000);
+                        Console.WriteLine(".");
+                        System.Threading.Thread.Sleep(1000);
                         Console.WriteLine("It is rough and hard, fist sized, perfect for breaking things and possibly" +
                                           " denting something's skull.");
                         break;
