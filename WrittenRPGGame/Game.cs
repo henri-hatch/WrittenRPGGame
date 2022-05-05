@@ -118,7 +118,7 @@ public class Game
                 break;
             
             case "additem":
-                Inventory.addItem("potion", "good soup", 1);
+                Inventory.AddItem("potion", 1);
                 Console.WriteLine("Successfully added item.");
                 StoryBreak();
                 break;

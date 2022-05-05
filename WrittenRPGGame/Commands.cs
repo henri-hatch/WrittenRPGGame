@@ -66,7 +66,7 @@ public class Commands : Game
         Console.Write("\nHow many of said item would you like to remove? >> ");
         int quantity = Convert.ToInt32(Console.ReadLine());
         
-        WrittenRPGGame.Inventory.removeItem(name, quantity);
+        WrittenRPGGame.Inventory.RemoveItem(name, quantity);
     }
 
     public void Save()

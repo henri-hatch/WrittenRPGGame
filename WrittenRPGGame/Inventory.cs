@@ -3,7 +3,7 @@ namespace WrittenRPGGame;
 public class Inventory : Game
 {
 
-    public static void addItem(string name, string desc, int quantity)
+    public static void AddItem(string name, int quantity)
     {
 
         bool containsItem = playerInventory.Any(item => item.Name == name);
@@ -11,7 +11,7 @@ public class Inventory : Game
         if (containsItem == false)
         {
             
-            playerInventory.Add(new Item(name, desc, quantity));
+            playerInventory.Add(new Item(name, quantity));
         }
         else
         {
@@ -28,7 +28,7 @@ public class Inventory : Game
         }
     }
 
-    public static void removeItem(string name, int quantity)
+    public static void RemoveItem(string name, int quantity)
     {
 
         Item item = playerInventory.SingleOrDefault(x => x.Name == name);

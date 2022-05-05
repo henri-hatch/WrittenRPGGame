@@ -95,7 +95,7 @@ public class Interactables : Game
                     // Stones Interaction
                     case 2:
                         Console.WriteLine("*You pick up the rock*");    // Italicized
-                        Inventory.addItem("Rock", "Rock", 1);
+                        Inventory.AddItem("Rock", 1);
                         Console.WriteLine("[+1 Rock]"); // Format for inventory text.
                         Console.Write(".");
                         System.Threading.Thread.Sleep(1000);
