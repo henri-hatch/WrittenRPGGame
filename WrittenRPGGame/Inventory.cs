@@ -59,4 +59,29 @@ public class Inventory : Game
             return;
         }
     }
+
+    public static void UseItem(string name)
+    {
+        
+        Item item = playerInventory.SingleOrDefault(x => x.Name == name);
+
+        if (item != null)
+        {
+
+            ItemUse.Use(name);
+            item.Quantity = item.Quantity - 1;
+            if (item.Quantity == 0)
+            {
+                
+                Console.WriteLine("Removed item!");
+                playerInventory.Remove(item);
+            }
+        }
+        else
+        {
+            
+            Console.WriteLine("This item does not exist in your inventory!");
+            return;
+        }
+    }
 }

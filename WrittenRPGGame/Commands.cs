@@ -12,7 +12,7 @@ public class Commands : Game
     {
 
         Console.WriteLine("Possible commands are: \n\t 'help' \n\t 'look' \n\t 'stats' \n\t 'interact' \n\t " +
-                          "'save' \n\t 'remove' \n\t 'inventory'");
+                          "'save' \n\t 'remove' \n\t 'inventory' \n]\t 'remove' \n\t 'use'");
     }
 
     public void Stats()
@@ -66,6 +66,14 @@ public class Commands : Game
         int quantity = Convert.ToInt32(Console.ReadLine());
         
         WrittenRPGGame.Inventory.RemoveItem(name, quantity);
+    }
+
+    public static void UseItem()
+    {
+        
+        Console.Write("What would you like to use? >> ");
+        string name = Console.ReadLine();
+        WrittenRPGGame.Inventory.UseItem(name);
     }
 
     public void Save()

@@ -79,29 +79,31 @@ public class Game
 
         switch (choice)
         {
-            /*case "":
-                break; */
-            
+            // Look command
             case "look":
                 new Commands().Look(CurrentStory);
                 StoryBreak();
                 break;
             
+            // Displays list of commands
             case "help":
                 new Commands().Help();
                 StoryBreak();
                 break;
             
+            // Displays player stats
             case "stats":
                 new Commands().Stats();
                 StoryBreak();
                 break;
             
+            // Saves and quits the game
             case "save":
                 new Commands().Save();
                 StoryBreak();
                 break;
             
+            // Shows all interactions
             case "interact":
                 NextLevel = Commands.Interact(CurrentStory);
                 if (NextLevel)
@@ -112,22 +114,32 @@ public class Game
                 StoryBreak();
                 break;
             
+            // Displays inventory
             case "inventory":
                 new Commands().Inventory();
                 StoryBreak();
                 break;
             
+            // Test command, remove later
             case "additem":
                 Inventory.AddItem("potion", 1);
                 Console.WriteLine("Successfully added item.");
                 StoryBreak();
                 break;
             
+            // Removes and drops an amount of an item
             case "remove":
                 Commands.RemoveItem();
                 StoryBreak();
                 break;
             
+            // Uses an item in your inventory
+            case "use":
+                Commands.UseItem();
+                StoryBreak();
+                break;
+            
+            // When in doubt
             default:
                 Console.WriteLine("Unknown command, please make sure you are spelling it right.");
                 StoryBreak();
