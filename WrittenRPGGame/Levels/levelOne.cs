@@ -1,56 +1,14 @@
 namespace WrittenRPGGame;
 
-public class Interactables : Game
+public class levelOne : Interactions
 {
-    // This will contain all interactables in each stage when looking. Each item will be contained in a list
-    // and can be looped through to list and interact with each item. Some can be picked up, others cannot.
 
-    public static List<string> areaOne = new List<string>();
     private static bool _doorOpened = false;
     private static bool _examinedWindow = false;
     static bool choiceOne = false, choiceTwo = false, choiceThree = false, choiceFour = false, 
         choiceFive = false;
 
-    public static void ActionText(string str)
-    {
-        Console.ForegroundColor = ConsoleColor.Gray;
-        Console.WriteLine("*"+str+"*");
-        Console.ResetColor();
-        
-    }
-
-    public static void PositiveStatusText(string str)
-    {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(str);
-        Console.ResetColor();
-    }
-
-    public static void NegativeStatusText(string str)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(str);
-        Console.ResetColor();
-    }
-
-    public static void InventoryUpdateText(string str)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkMagenta;
-        Console.WriteLine("[" + str + "]");
-        Console.ResetColor();
-    }
-    
-    public void SetInteractLists()
-    {
-
-        areaOne.Add("1. Chains");
-        areaOne.Add("2. Loose Rocks");
-        areaOne.Add("3. The Heap of Cloth on the Ground");
-        areaOne.Add("4. The Door");
-        areaOne.Add("5. The Window");
-    }
-    
-    public static int Interact(int currentStory)
+    public static int InteractPrint(int currentStory)
     {
 
         int choice = 0;
@@ -60,7 +18,7 @@ public class Interactables : Game
         {
             
             case 1:
-                for (int i = 0; i < areaOne.Count; i++)
+                for (int i = 0; i < levelOneList.Count; i++)
                 {
                     switch (i)
                     {
@@ -68,65 +26,65 @@ public class Interactables : Game
                             if (choiceOne)
                             {
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 Console.ResetColor();
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 break;
                             }
                         case 1:
                             if (choiceTwo)
                             {
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 Console.ResetColor();
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 break;
                             }
                         case 2:
                             if (choiceThree)
                             {
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 Console.ResetColor();
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 break;
                             }
                         case 3:
                             if (choiceFour)
                             {
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 Console.ResetColor();
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 break;
                             }
                         case 4:
                             if (choiceFive)
                             {
                                 Console.ForegroundColor = ConsoleColor.Gray;
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 Console.ResetColor();
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine(areaOne[i]);
+                                Console.WriteLine(levelOneList[i]);
                                 break;
                             }
                     }
@@ -203,7 +161,7 @@ public class Interactables : Game
                         }
                         ActionText("You pick up the rock");
                         Inventory.AddItem("Rock", 1);   // Adds the rock to the player's inventory.
-                        InventoryUpdateText("+1 Rock"); // Format for inventory text.
+                        InventoryUpdateText("+1 Rock");
                         Console.Write(".");
                         System.Threading.Thread.Sleep(500);
                         Console.Write(".");

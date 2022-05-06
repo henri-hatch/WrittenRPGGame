@@ -36,17 +36,16 @@ public class Commands : Game
 
     public static bool Interact(int currentStage)
     {
-        bool nextLevelFetch;
+        bool finishedLevel;
         int choice;
-        choice = Interactables.Interact(currentStage);
-        nextLevelFetch = Interactables.InteractChoices(currentStage, choice);
+        choice = Interactions.Print(currentStage);
+        finishedLevel = Interactions.Choice(currentStage, choice);
 
-        return nextLevelFetch;
+        return finishedLevel;
     }
 
     public void Inventory()
     {
-        
         // Shows Inventory
         int num = 1;
         
@@ -94,6 +93,7 @@ public class Commands : Game
                     file.WriteLine(_player.Level.ToString());
                     file.WriteLine(_player.Gold.ToString());
                     file.WriteLine(CurrentStory.ToString());
+                    file.WriteLine(_player.IsChained.ToString());
                 }
                 
                 Environment.Exit(0);

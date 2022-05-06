@@ -41,9 +41,10 @@ public class Game
                 _player.Level = Convert.ToInt32(lines[8]);
                 _player.Gold = Convert.ToInt32(lines[9]);
                 CurrentStory = Convert.ToInt32(lines[10]);
+                _player.IsChained = Convert.ToBoolean(lines[11]);
             }
             
-            new Interactables().SetInteractLists();
+            Interactions.SetInteractLists();
         }
 
         else
@@ -62,7 +63,7 @@ public class Game
             _player.Gold = 0;
             _player.IsChained = true;
 
-            new Interactables().SetInteractLists();
+            Interactions.SetInteractLists();
         }
     }
 
