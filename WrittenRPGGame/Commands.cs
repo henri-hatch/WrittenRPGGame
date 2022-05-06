@@ -37,7 +37,7 @@ public class Commands : Game
     public static bool Interact(int currentStage)
     {
         bool nextLevelFetch;
-        int choice, interact;
+        int choice;
         choice = Interactables.Interact(currentStage);
         nextLevelFetch = Interactables.InteractChoices(currentStage, choice);
 

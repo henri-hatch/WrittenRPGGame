@@ -73,14 +73,13 @@ public class Game
         
         string choice;
         
-        Console.Write("\nEnter a command or press <Enter> to continue. Type 'help' for a list of all available" +
-                          " commands. >> ");
+        Console.Write("\nEnter a command. Type 'help' for a list of all available commands. >> ");
         choice = Console.ReadLine();
 
         switch (choice)
         {
-            case "":
-                break;
+            /*case "":
+                break; */
             
             case "look":
                 new Commands().Look(CurrentStory);
@@ -141,7 +140,7 @@ public class Game
         // Main method that runs the whole thing.
         
         GameInit();
-
+        
         Console.WriteLine("Welcome to Heaven's Fall");
 
         if (File.Exists("HFSave"))

@@ -37,22 +37,22 @@ public class Checks
         if ((randomNum - stat) <= playerNum && playerNum <= (randomNum + stat))
         {
             Console.Write("Checking.");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Write(".");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Write(".");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Clear();
             return true;
         }
         else
         {
             Console.Write("Checking.");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Write(".");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Write(".");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             Console.Clear();
             return false;
         }

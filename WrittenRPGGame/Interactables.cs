@@ -8,6 +8,37 @@ public class Interactables : Game
     public static List<string> areaOne = new List<string>();
     private static bool _doorOpened = false;
     private static bool _examinedWindow = false;
+    static bool choiceOne = false, choiceTwo = false, choiceThree = false, choiceFour = false, 
+        choiceFive = false;
+
+    public static void ActionText(string str)
+    {
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine("*"+str+"*");
+        Console.ResetColor();
+        
+    }
+
+    public static void PositiveStatusText(string str)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(str);
+        Console.ResetColor();
+    }
+
+    public static void NegativeStatusText(string str)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(str);
+        Console.ResetColor();
+    }
+
+    public static void InventoryUpdateText(string str)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+        Console.WriteLine("[" + str + "]");
+        Console.ResetColor();
+    }
     
     public void SetInteractLists()
     {
@@ -31,13 +62,80 @@ public class Interactables : Game
             case 1:
                 for (int i = 0; i < areaOne.Count; i++)
                 {
+                    switch (i)
+                    {
+                        case 0:
+                            if (choiceOne)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.WriteLine(areaOne[i]);
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(areaOne[i]);
+                                break;
+                            }
+                        case 1:
+                            if (choiceTwo)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.WriteLine(areaOne[i]);
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(areaOne[i]);
+                                break;
+                            }
+                        case 2:
+                            if (choiceThree)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.WriteLine(areaOne[i]);
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(areaOne[i]);
+                                break;
+                            }
+                        case 3:
+                            if (choiceFour)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.WriteLine(areaOne[i]);
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(areaOne[i]);
+                                break;
+                            }
+                        case 4:
+                            if (choiceFive)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.WriteLine(areaOne[i]);
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(areaOne[i]);
+                                break;
+                            }
+                    }
                     
-                    Console.WriteLine(areaOne[i]);
                 }
                 
                 Console.Write("\nEnter your choice >> ");
                 choice = Convert.ToInt32(Console.ReadLine());
-
+                Console.Clear();
                 break;
         }
 
@@ -48,107 +146,139 @@ public class Interactables : Game
     public static bool InteractChoices(int currentStory, int choice)
     {
         bool containsRock = playerInventory.Any(item => item.Name == "Rock");
+        
         switch (currentStory)
         {
             case 1:
-                
-                
+
                 switch (choice)
                 {
                     
                     // Chains Interaction
                     case 1:
-                        
-                        if (_player.IsChained && !containsRock)
+                        if (choiceOne)
                         {
-                            Console.WriteLine("\n*You attempt to break the chains*");   // Italicized
-                            System.Threading.Thread.Sleep(2000);
+                            return Commands.Interact(1);
+                            break;
+                        }
+                        else if (_player.IsChained && !containsRock)
+                        {
+                            ActionText("You attempt to break the chains"); 
+                            System.Threading.Thread.Sleep(2000);    // Pauses for two seconds.
 
                             // Performs the check
                             if (Checks.Check(_player.Strength, 5, "Strength"))
                             {
                                 _player.IsChained = false;
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("You are no longer chained");
-                                Console.ResetColor();
+                                PositiveStatusText("You are no longer chained!");
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("You didn't pass the Strength check, and you are still chained.");
-                                Console.ResetColor();
+                                NegativeStatusText("You didn't pass the Strength check, and you are still chained.");
                                 break;
                             }
                         }
                         else if (_player.IsChained && containsRock)
                         {
-                            Console.WriteLine("You use the rock to break the chains");
-                            Console.WriteLine("*You are now freed from the chains*");   // Italicized
+                            
+                            ActionText("You use the rock to break the chains");
+                            System.Threading.Thread.Sleep(1000);
                             _player.IsChained = false;
+                            PositiveStatusText("You are no longer chained!");  
+
                         }
                         else
                         {
                             Console.WriteLine("You look at the chains and notice that they are rusty");
+                            choiceOne = true;
                         }
                         break;
                     
                     // Stones Interaction
                     case 2:
-                        Console.WriteLine("*You pick up the rock*");    // Italicized
-                        Inventory.AddItem("Rock", 1);
-                        Console.WriteLine("[+1 Rock]"); // Format for inventory text.
+                        if (choiceTwo)
+                        {
+                            return Commands.Interact(1);
+                            break;
+                        }
+                        ActionText("You pick up the rock");
+                        Inventory.AddItem("Rock", 1);   // Adds the rock to the player's inventory.
+                        InventoryUpdateText("+1 Rock"); // Format for inventory text.
                         Console.Write(".");
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(500);
                         Console.Write(".");
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(500);
                         Console.WriteLine(".");
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(500);
                         Console.WriteLine("It is rough and hard, fist sized, perfect for breaking things and possibly" +
                                           " denting something's skull.");
+                        choiceTwo = true;
                         break;
                     
                     // The Heap of Cloth on the Ground Interaction
                     case 3:
+                        if (choiceThree)
+                        {
+                            return Commands.Interact(1);
+                            break;
+                        }
                         Console.WriteLine("Bones and dried flesh peek out from under black cloth. You step closer, " +
                                           "and see that it's a dead imp. Its jaw bone is missing, and its bony " +
                                           "fingers are clutched around a vile of red liquid.");
-                        Console.WriteLine("[+1 Potion] - Restores 50 HP");   // format string for inventory update text.
+                        System.Threading.Thread.Sleep(5000);
+                        ActionText("You pick up the vile on the ground");
+                        Inventory.AddItem("Potion", 1);
+                        InventoryUpdateText("+1 Potion");
+                        Console.WriteLine("\tA potion restores 50 HP!");
+                        choiceThree = true;
                         break;
                     
                     // Door Interactions
                     case 4:
-                        if (_player.IsChained)
+                        if (choiceFour)
                         {
-                            Console.WriteLine("*You examine the door*");    // Italicized
+                            return Commands.Interact(1);
+                            break;
+                        }
+                        else if (_player.IsChained)
+                        {
+                            ActionText("You examine the door");
                             Console.WriteLine("The door is rusty and old. Two hinges hold it to the wall and a rusty " +
                                               "lock holds the iron shut.");
                         }
                         else if (!_doorOpened && !_player.IsChained)
                         {
-                            Console.WriteLine("*You open the door*");   // Italicized
+                            ActionText("You open the door");
                             return true;
                         }
                         else
                         {
-                            Console.WriteLine("*You examine the door*");    // Italicized
+                            ActionText("You examine the door");
                             Console.WriteLine("It is a rusty and broken door.");
                         }
                         break;
                     
                     // Window Interaction
                     case 5:
+                        if (choiceFive)
+                        {
+                            return Commands.Interact(1);
+                            break;
+                        }
                         if (!_examinedWindow)
                         {
                             _examinedWindow = true;
-                            Console.WriteLine("*You examine the window*");  // Italicized
+                            ActionText("You examine the window");
+                            System.Threading.Thread.Sleep(1000);    // Pauses the console for 1 second.
                             Console.WriteLine("Three rusty, metal bars stand embedded in stone, separating you from " +
                                               "a bright blue sky and a darker blue sea that stretches for miles " +
                                               "before you.");
                         }
                         else
                         {
-                            Console.WriteLine("*You examine the window*");
+                            ActionText("You examine the window");
                             Console.WriteLine("It is the same window as before.");
+                            choiceFive = true;
                         }
                         break;
                         
