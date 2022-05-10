@@ -2,18 +2,29 @@ namespace WrittenRPGGame;
 
 public class Interactions : Game
 {
+    protected static List<string> interactionsList = new();
     
-    protected static List<string> levelOneList = new List<string>();
     
-    public static void SetInteractLists()
+    public static void SetInteractLists(int currentLevel)
     {
-
-        // Level One
-        levelOneList.Add("1. Chains");
-        levelOneList.Add("2. Loose Rocks");
-        levelOneList.Add("3. The Heap of Cloth on the Ground");
-        levelOneList.Add("4. The Door");
-        levelOneList.Add("5. The Window");
+        switch (currentLevel)
+        {
+            // Level One
+             case 1:
+                 interactionsList.Add("1. Chains");
+                 interactionsList.Add("2. Loose Rocks");
+                 interactionsList.Add("3. The Heap of Cloth on the Ground");
+                 interactionsList.Add("4. The Door");
+                 interactionsList.Add("5. The Window");
+                 break;
+             // Level Two
+             case 2:
+                 interactionsList.Clear();
+                 
+                 interactionsList.Add("1. Test");
+                 break;
+                 
+        }
     }
 
     // Links to all interaction prints.
@@ -26,7 +37,10 @@ public class Interactions : Game
         {
             
             case 1:
-                choice = levelOne.InteractPrint(currentStage);
+                choice = levelOne.InteractPrint();
+                break;
+            case 2:
+                choice = levelTwo.InteractPrint();
                 break;
         }
 
@@ -43,7 +57,7 @@ public class Interactions : Game
         {
             
             case 1:
-                finishLevel = levelOne.InteractChoices(currentStage, choice);
+                finishLevel = levelOne.Interact(choice);
                 break;
         }
 

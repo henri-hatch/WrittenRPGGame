@@ -13,7 +13,9 @@ public class Game
     
     public static List<Item> playerInventory = new List<Item>();
 
-    public static bool NextLevel;
+    private static int _currentLevel = 1;
+
+    public static bool NextLevelCheck;
     public static void GameInit()
     {
         
@@ -44,7 +46,6 @@ public class Game
                 _player.IsChained = Convert.ToBoolean(lines[11]);
             }
             
-            Interactions.SetInteractLists();
         }
 
         else
@@ -63,7 +64,7 @@ public class Game
             _player.Gold = 0;
             _player.IsChained = true;
 
-            Interactions.SetInteractLists();
+            Interactions.SetInteractLists(1);
         }
     }
 
@@ -105,10 +106,10 @@ public class Game
             
             // Shows all interactions
             case "interact":
-                NextLevel = Commands.Interact(CurrentStory);
-                if (NextLevel)
+                NextLevelCheck = Commands.Interact(_currentLevel);
+                if (NextLevelCheck)
                 {
-                    NextLevel = false;
+                    NextLevel();
                     break;
                 }
                 StoryBreak();
@@ -179,5 +180,11 @@ public class Game
         }
 
         Console.WriteLine("The program ran successfully.");
+    }
+    public static void NextLevel()
+    {
+        _currentLevel++;
+        NextLevelCheck = false;
+        Interactions.SetInteractLists(_currentLevel);
     }
 }

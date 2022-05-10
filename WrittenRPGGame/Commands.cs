@@ -34,12 +34,25 @@ public class Commands : Game
         StoryText.LookStory(currentStage); 
     }
 
-    public static bool Interact(int currentStage)
+    public static bool Interact(int currentLevel)
     {
         bool finishedLevel;
         int choice;
-        choice = Interactions.Print(currentStage);
-        finishedLevel = Interactions.Choice(currentStage, choice);
+        switch (currentLevel)
+        {
+            case 1: 
+                choice = Interactions.Print(currentLevel);
+                finishedLevel = Interactions.Choice(currentLevel, choice);
+                break;
+            case 2:
+                choice = Interactions.Print(currentLevel);
+                finishedLevel = false;
+                break;
+            default:
+                finishedLevel = false;
+                break;
+        }
+        
 
         return finishedLevel;
     }
