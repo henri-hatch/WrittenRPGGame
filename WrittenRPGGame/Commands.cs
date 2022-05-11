@@ -41,12 +41,12 @@ public class Commands : Game
         switch (currentLevel)
         {
             case 1: 
-                choice = Interactions.Print(currentLevel);
-                finishedLevel = Interactions.Choice(currentLevel, choice);
+                choice = Interactions.InteractPrint();
+                finishedLevel = levelOne.LevelOneInteract(choice);
                 break;
             case 2:
-                choice = Interactions.Print(currentLevel);
-                finishedLevel = false;
+                choice = Interactions.InteractPrint();
+                finishedLevel = levelTwo.LevelTwoInteract(choice);
                 break;
             default:
                 finishedLevel = false;

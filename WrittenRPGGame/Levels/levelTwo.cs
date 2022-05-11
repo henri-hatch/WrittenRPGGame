@@ -3,37 +3,26 @@ namespace WrittenRPGGame;
 public class levelTwo : Interactions
 {
     private static bool choiceOne;
-    public static int InteractPrint()
+
+    public static bool LevelTwoInteract(int choice)
     {
-        int choice = 0;
-    
-        Console.WriteLine("Enter an option using the number before each option.");
-        for (int i = 0; i < interactionsList.Count; i++)
+        switch (choice)
         {
-            switch (i)
-            {
-                case 0:
-                    if (choiceOne)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-            }
-                    
+            case 1:
+                if (OneIsUsed)
+                {
+                    return Commands.Interact(2);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("You tested the object!");
+                    OneIsUsed = true;
+                    break;
+                }
+                
         }
-        
-        Console.Write("\nEnter your choice >> ");
-        choice = Convert.ToInt32(Console.ReadLine());
-        Console.Clear();
 
-        return choice;
-
+        return false;
     }
 }

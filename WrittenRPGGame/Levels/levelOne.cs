@@ -5,99 +5,8 @@ public class levelOne : Interactions
     
     private static bool _doorOpened = false;
     private static bool _examinedWindow = false;
-    static bool choiceOne = false, choiceTwo = false, choiceThree = false, choiceFour = false, 
-        choiceFive = false;
 
-    public static int InteractPrint()
-    {
-        
-        int choice = 0;
-    
-        Console.WriteLine("Enter an option using the number before each option.");
-        
-        
-        for (int i = 0; i < interactionsList.Count; i++)
-        {
-            switch (i)
-            {
-                case 0:
-                    if (choiceOne)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-                case 1:
-                    if (choiceTwo)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-                case 2:
-                    if (choiceThree)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-                case 3:
-                    if (choiceFour)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-                case 4:
-                    if (choiceFive)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(interactionsList[i]);
-                        Console.ResetColor();
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine(interactionsList[i]);
-                        break;
-                    }
-            }
-                    
-        }
-                
-        Console.Write("\nEnter your choice >> ");
-        choice = Convert.ToInt32(Console.ReadLine());
-        Console.Clear();
-
-        return choice;
-    }
-
-
-    public static bool Interact(int choice)
+    public static bool LevelOneInteract(int choice)
     {
         bool containsRock = playerInventory.Any(item => item.Name == "Rock");
         
@@ -106,7 +15,7 @@ public class levelOne : Interactions
                     
             // Chains Interaction
             case 1:
-                if (choiceOne)
+                if (OneIsUsed)
                 {
                     return Commands.Interact(1);
                     break;
@@ -140,13 +49,13 @@ public class levelOne : Interactions
                 else
                 {
                     Console.WriteLine("You look at the chains and notice that they are rusty");
-                    choiceOne = true;
+                    OneIsUsed = true;
                 }
                 break;
                     
             // Stones Interaction
             case 2:
-                if (choiceTwo)
+                if (TwoIsUsed)
                 {
                     return Commands.Interact(1);
                     break;
@@ -162,12 +71,12 @@ public class levelOne : Interactions
                 System.Threading.Thread.Sleep(500);
                 Console.WriteLine("It is rough and hard, fist sized, perfect for breaking things and possibly" +
                                   " denting something's skull.");
-                choiceTwo = true;
+                TwoIsUsed = true;
                 break;
                     
             // The Heap of Cloth on the Ground Interaction
             case 3:
-                if (choiceThree)
+                if (ThreeIsUsed)
                 {
                     return Commands.Interact(1);
                     break;
@@ -180,12 +89,12 @@ public class levelOne : Interactions
                 Inventory.AddItem("Potion", 1);
                 InventoryUpdateText("+1 Potion");
                 Console.WriteLine("\tA potion restores 50 HP!");
-                choiceThree = true;
+                ThreeIsUsed = true;
                 break;
                     
             // Door Interactions
             case 4:
-                if (choiceFour)
+                if (FourIsUsed)
                 {
                     return Commands.Interact(1);
                     break;
@@ -210,7 +119,7 @@ public class levelOne : Interactions
                     
             // Window Interaction
             case 5:
-                if (choiceFive)
+                if (FiveIsUsed)
                 {
                     return Commands.Interact(1);
                     break;
@@ -228,7 +137,7 @@ public class levelOne : Interactions
                 {
                     ActionText("You examine the window");
                     Console.WriteLine("It is the same window as before.");
-                    choiceFive = true;
+                    FiveIsUsed = true;
                 }
                 break;
                         
